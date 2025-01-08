@@ -10,7 +10,11 @@
 
 <body>
     <div class="container">
-        <h1 class="my-4">Employee Management</h1>
+        <div class="d-flex justify-content-between align-items-center my-4">
+            <h1>Employee Management</h1>
+            <!-- Logout Button -->
+            <a href="{{ url_for('logout') }}" class="btn btn-secondary">Logout</a>
+        </div>
 
         <!-- Add Employee Button -->
         <a href="{{ url_for('add_employee') }}" class="btn btn-primary mb-3">Add New Employee</a>
@@ -31,7 +35,7 @@
             <tbody>
                 {% for employee in employees %}
                 <tr>
-                    <td>{{ employee.employee_id }}</td>
+                    <td>{{ loop.index }}</td>
                     <td>{{ employee.name }}</td>
                     <td>{{ employee.email }}</td>
                     <td>{{ employee.position }}</td>
@@ -41,12 +45,11 @@
                         <!-- Update and Delete Actions -->
                         <a href="{{ url_for('update_employee', employee_id=employee.employee_id) }}"
                             class="btn btn-warning btn-sm">Update</a>
-                        <form method="POST" action="{{ url_for('delete_employee', employee_id=employee.employee_id) }}" style="display:inline;">
-                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-
+                        <form method="POST" action="{{ url_for('delete_employee', employee_id=employee.employee_id) }}"
+                            style="display:inline;">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </form>
-
                     </td>
                 </tr>
                 {% endfor %}

@@ -1,10 +1,36 @@
 from flask import render_template, redirect, url_for, flash, request, jsonify
 from app import app, db
-from app.models import Employee
-from app.forms import EmployeeForm
+from app.models import Employee,User
+from app.forms import EmployeeForm, LoginForm
+from flask_login import login_user, logout_user, login_required
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()  
+    if form.validate_on_submit():  
+        # Assuming you have a User model
+        print(form.password.data)
+        user = User.query.filter_by(email=form.email.data).first()
+        # Add password check here
+        if user.password == form.password.data:
+            login_user(user)
+            flash('Login successful!', 'success')
+            return redirect(url_for('index'))  # Redirect to a protected page
+        else:
+            flash('Login failed. Please check your credentials.', 'danger')
+
+    return render_template('login.html', form=form)
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash('You have been logged out.', 'info')
+    return redirect(url_for('login'))
+
+@app.route('/allEmployee')
 def index():
     employees = Employee.query.all()
     return render_template('index.html', employees=employees)

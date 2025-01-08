@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, FloatField, DateField, SubmitField
-from wtforms.validators import DataRequired, Email, ValidationError
-from app.models import Employee
+from wtforms import StringField, FloatField, DateField, SubmitField, PasswordField
+from wtforms.validators import DataRequired, Email, ValidationError,EqualTo
+from app.models import Employee,User
 
 
 class EmployeeForm(FlaskForm):
@@ -16,3 +16,11 @@ class EmployeeForm(FlaskForm):
         employee = Employee.query.filter_by(email=email.data).first()
         if employee:
             raise ValidationError('Email is already in use.')
+
+
+class LoginForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Login')
+
+
