@@ -18,13 +18,11 @@ This is a Flask-based Employee Management System that allows users to manage emp
 
 ## Tech Stack
 
-**Backend Framework:** React, Redux, TailwindCSS
-
-**Server:** Flask
+**Backend Framework:** Flask
 
 **Database:** MySql
 
-**Frontend:** Bootstrap for styling
+**Frontend:** HTML and Bootstrap for styling
 
 **Testing:** Python unittest
 
@@ -33,26 +31,31 @@ This is a Flask-based Employee Management System that allows users to manage emp
 ## Prerequisites
 Python 3.8 or higher
 
-Virtual environment (optional but recommended)
-## Installation
+Virtual environment (optional but recommended)## Installation
 
 Clone the repository:
 
 ```bash
 git clone https://github.com/Arwiin07/employeeDetails.git
-cd EmployeeManagement
 
 ```
+Navigate to the project root folder
+```bash
+cd employeeDetails
+
+```
+
 Set up a virtual environment (optional):
 ```bash
 python -m venv .venv
+```
+```bash
 venv\Scripts\activate
 ```
 Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
-
 ## Database Setup(optional)
 To set up the database, follow these steps:
 
@@ -64,11 +67,18 @@ To set up the database, follow these steps:
 - The database and its schema will be created.
 - This script will automatically create the database with the same schema -   used in this project. Ensure that your MySQL server is running and properly configured before executing the script.
 
+## Configure the database connection string:
+
+In the app/ __init__. py file, update the following line to use your local database connection string:
+
+```python
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://<username>:<password>@<hostname>/employee_db'
+```
 
 ## Run Locally
 Run the Employee Management application.
 
-```
+```python
 python main.py
 ```
 

@@ -6,7 +6,7 @@ from flask_login import LoginManager
 
 app = Flask(__name__, template_folder='../templates')
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://mysqlserver:Arwiin%40200016@test-mysqlserver.mysql.database.azure.com:3306/employee_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://<username>:<password>@<hostname>/employee_db'
 
 # SSL Configuration
 app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
