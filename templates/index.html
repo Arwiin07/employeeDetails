@@ -42,9 +42,11 @@
                         <a href="{{ url_for('update_employee', employee_id=employee.employee_id) }}"
                             class="btn btn-warning btn-sm">Update</a>
                         <form method="POST" action="{{ url_for('delete_employee', employee_id=employee.employee_id) }}" style="display:inline;">
-                            {{ csrf_token() }}
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </form>
+
                     </td>
                 </tr>
                 {% endfor %}
