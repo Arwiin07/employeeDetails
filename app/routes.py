@@ -9,14 +9,12 @@ from flask_login import login_user, logout_user, login_required
 def login():
     form = LoginForm()  
     if form.validate_on_submit():  
-        # Assuming you have a User model
-        print(form.password.data)
         user = User.query.filter_by(email=form.email.data).first()
         # Add password check here
         if user.password == form.password.data:
             login_user(user)
             flash('Login successful!', 'success')
-            return redirect(url_for('index'))  # Redirect to a protected page
+            return redirect(url_for('index'))  
         else:
             flash('Login failed. Please check your credentials.', 'danger')
 

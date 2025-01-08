@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, FloatField, DateField, SubmitField, PasswordField
 from wtforms.validators import DataRequired, Email, ValidationError,EqualTo
-from app.models import Employee,User
+from app.models import Employee
 
 
 class EmployeeForm(FlaskForm):
