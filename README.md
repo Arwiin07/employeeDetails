@@ -75,7 +75,24 @@ In the app/ __init__. py file, update the following line to use your local datab
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://<username>:<password>@<hostname>/employee_db'
 ```
 
-## Run Locally
+## Run Locally With Docker
+
+
+Locate to root project folder and run this in command prompt
+
+Build the docker file
+```cmd
+docker build -t my-employee-app .
+```
+Docker runs in the port 8000
+```cmd
+docker run -d -p 8000:80 my-employee-app
+```
+Access the app in your browser at http://localhost:8000.
+
+
+__Note__: Make sure Docker is installed on your system. If you haven't installed Docker yet, follow the instructions at docker.com for your platform.
+## Run Locally (Without Docker)
 Run the Employee Management application.
 
 ```python
