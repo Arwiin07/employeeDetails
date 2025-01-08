@@ -31,7 +31,9 @@ This is a Flask-based Employee Management System that allows users to manage emp
 ## Prerequisites
 Python 3.8 or higher
 
-Virtual environment (optional but recommended)## Installation
+Virtual environment (optional but recommended)
+
+## Installation
 
 Clone the repository:
 
